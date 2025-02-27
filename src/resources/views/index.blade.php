@@ -12,7 +12,9 @@
 </div>
 
 <div class="todo__content">
-    <form class="create-form">
+    <!-- <form class="create-form"> -->
+    <form class="create-form" action="/todos" method="post">
+        @csrf
         <div class="create-form__item">
             <input class="create-form__item-input" type="text" name="content">
         </div>
@@ -25,11 +27,13 @@
             <tr class="todo-table__row">
                 <th class="todo-table__header">Todo</th>
             </tr>
+            @foreach ($todos as $todo)
             <tr class="todo-table__row">
                 <td class="todo-table__item">
                     <form class="update-form">
                         <div class="update-form__item">
-                            <input class="update-form__item-input" type="text" name="content" value="test">
+                            <!-- <input class="update-form__item-input" type="text" name="content" value="test"> -->
+                            <p class="update-form__item-input">{{ $todo['content'] }}</p>
                         </div>
                         <div class="update-form__button">
                             <button class="update-form__button-submit" type="submit">更新</button>
@@ -44,7 +48,8 @@
                     </form>
                 </td>
             </tr>
-            <tr class="todo-table__row">
+            @endforeach
+            <!-- <tr class="todo-table__row">
                 <td class="todo-table__item">
                     <form class="update-form">
                         <div class="update-form__item">
@@ -62,7 +67,7 @@
                         </div>
                     </form>
                 </td>
-            </tr>
+            </tr> -->
         </table>
     </div>
 </div>
