@@ -13,6 +13,7 @@ class TodoController extends Controller
     {
         // $todos = Todo::all();
         $todos = Todo::with('category')->get();
+        // dd($todos);
         $categories = Category::all();
         // return view('index', compact('todos'));
         return view('index', compact('todos', 'categories'));
